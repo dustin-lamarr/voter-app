@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import SummaryRow from "../SummaryRow";
+import React from "react";
+
 
 function StateLink({ state }) {
   // const [stateAbbr, getStates] = useState([state]);
@@ -15,7 +15,7 @@ function StateLink({ state }) {
     <>
       <a
         className="nav-link"
-        href="#"
+        href={state}
         // onClick={() => {
         //   showStateSens(state);
         // }}

@@ -2,11 +2,9 @@ import React from "react";
 
 function Quickview({ children }) {
   
-
-  // return <Quickview ></Quickview>;
   return (
    
-        <li>{ children }</li>
+        <li className="border border-dark">{ children }</li>
       
   );
   }

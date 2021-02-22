@@ -19,9 +19,9 @@ function SummaryRow() {
 
   console.log(members);
   return (
-    <div className="row border border-5 border-dark">
+    <div className="row">
       <div className="col-4"> 
-        <img src="https://via.placeholder.com/150"></img>
+        <img src="https://via.placeholder.com/100" alt="placeholder"></img>
       </div> 
       <div className="col-8">
         <ul className="justify-start">
