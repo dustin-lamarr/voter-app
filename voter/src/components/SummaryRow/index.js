@@ -6,7 +6,7 @@ import Quickview from "../Quickview";
 function SummaryRow() {
   const [members, getMembers] = useState([]);
   const apiCall =
-    "https://api.propublica.org/congress/v1/members/senate/" + {state} + "/current.json";
+    "https://api.propublica.org/congress/v1/116/senate/members.json";
   useEffect(() => {
     axios
       .get(apiCall, {
@@ -28,9 +28,8 @@ function SummaryRow() {
           {members.map((member) => {
             return (
             <Quickview key={member.id}>
-              <p>Member: {member.first_name} {member.last_name}</p>
-              <p>Party: {member.party}</p>
-              <p>State: {member.state}</p>
+              <p>{member.first_name} {member.last_name} 
+              Party: {member.party} State: {member.state}</p>
               </Quickview>
             )
           })}
