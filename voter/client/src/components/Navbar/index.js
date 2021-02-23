@@ -2,10 +2,10 @@ import React from "react";
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white">
+    <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom border-3 shadow-sm">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
-          <img src="/images/voter-logo.png" alt="voter logo"/>
+          <img className="" src="/images/voter-logo.png" alt="voter logo"/>
         </a>
         <button
           className="navbar-toggler"
@@ -26,8 +26,8 @@ function Navbar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/dashboard">
-                Dashboard
+              <a className="nav-link" href="/login">
+                Login
               </a>
             </li>
             {/* <li className="nav-item">
@@ -35,16 +35,16 @@ function Navbar() {
                 Pricing
               </a>
             </li> */}
-            {/* <li className="nav-item">
+            <li className="nav-item">
               <a
                 className="nav-link disabled"
-                href="#"
+                href="/login"
                 tabindex="-1"
                 aria-disabled="true"
               >
-                Disabled
+                Dashboard
               </a>
-            </li> */}
+            </li>
           </ul>
         </div>
       </div>

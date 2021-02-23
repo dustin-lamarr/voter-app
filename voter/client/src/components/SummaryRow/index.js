@@ -21,7 +21,7 @@ function SummaryRow() {
   return (
     <div className="row">
       <div className="col-4"> 
-        <img src="https://via.placeholder.com/100" alt="placeholder"></img>
+        <img className="img-thumbnail" src="https://via.placeholder.com/100" alt="placeholder"></img>
       </div> 
       <div className="col-8">
         <ul className="justify-start">
