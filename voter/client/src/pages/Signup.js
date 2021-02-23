@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Container from "../components/Container";
 
 function Signup() {
@@ -9,7 +10,19 @@ function Signup() {
     buttonColor: {
       backgroundColor: "#6B000B",
     },
+    optionsColor: {
+        color: "black",
+      }
   };
+
+  const [states, getStates] = useState([]);
+
+  useEffect(() => {
+    axios.get("./states.json").then((res) => {
+      getStates(res.data.states);
+    });
+  }, []);
+
   return (
     <div>
       <Container>
@@ -24,7 +37,7 @@ function Signup() {
             <form>
               <div className="row pb-3">
                 <label
-                  htmlFor="exampleFormControlInput1"
+                  htmlFor="nameInput"
                   className="form-label"
                 >
                   Name
@@ -47,51 +60,58 @@ function Signup() {
                 </div>
               </div>
               <div className="col-12 pb-3">
-                <label htmlFor="inputAddress" className="form-label">
+                <label htmlFor="addressInput" className="form-label">
                   Address
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="inputAddress"
+                  id="addressInput"
                   placeholder="1234 Main St"
                 />
               </div>
               <div className="col-12 pb-3">
-                <label htmlFor="inputAddress2" className="form-label">
+                <label htmlFor="addressInput2" className="form-label">
                   Address 2
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="inputAddress2"
+                  id="addressInput2"
                   placeholder="Apartment, studio, or floor"
                 />
               </div>
               <div className="row">
               <div className="col-md-5 pb-3">
-                <label htmlFor="inputCity" className="form-label">
+                <label htmlFor="cityInput" className="form-label">
                   City
                 </label>
-                <input type="text" className="form-control" id="inputCity" />
+                <input type="text" className="form-control" id="cityInput" />
               </div>
               <div className="col-md-4 pb-3">
-                <label htmlFor="inputState" className="form-label">
+                <label htmlFor="stateInput" className="form-label">
                   State
                 </label>
-                <select id="inputState" className="form-select">
-                  <option selected>Choose...</option>
-                  <option>...</option>
+                <select id="stateInput" className="form-select" >
+                  <option defaultValue>Choose...</option>
+                   {
+                  states.map((state, i) => {
+                      console.log(state,i)
+                  return ( 
+                    <option value={state} key={i} style={styles.optionsColor}></option>
+                      )  
+                  })}
+                  
                 </select>
               </div>
               <div className="col-md-3 pb-3">
-                <label htmlFor="inputZip" className="form-label">
+                <label htmlFor="zipInput" className="form-label">
                   Zip
                 </label>
-                <input type="text" className="form-control" id="inputZip" />
+                <input type="number" className="form-control" id="zipInput" />
               </div>
               </div>
-              <label htmlFor="exampleFormControlInput1" className="form-label">
+              <label htmlFor="signupEmail" className="form-label">
                 Email Address
               </label>
               <input
@@ -101,7 +121,7 @@ function Signup() {
                 placeholder="name@example.com"
               ></input>
               <label
-                htmlFor="exampleFormControlInput1"
+                htmlFor="signupPassword"
                 className="form-label pt-3"
               >
                 Password

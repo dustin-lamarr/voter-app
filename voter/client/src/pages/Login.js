@@ -21,7 +21,7 @@ function Login() {
           <h3>Login to your Voter Dashboard</h3>
           <hr></hr>
           <form>
-            <label htmlFor="exampleFormControlInput1" className="form-label">
+            <label htmlFor="emailInput" className="form-label">
               Email Address
             </label>
             <input
@@ -31,7 +31,7 @@ function Login() {
               placeholder="name@example.com"
             ></input>
             <label
-              htmlFor="exampleFormControlInput1"
+              htmlFor="passwordInput"
               className="form-label pt-3"
             >
               Password
