@@ -98,7 +98,7 @@ function Signup() {
                   states.map((state, i) => {
                       console.log(state,i)
                   return ( 
-                    <option value={state} key={i} style={styles.optionsColor}></option>
+                    <option value={state} key={i} style={styles.optionsColor}>{state}</option>
                       )  
                   })}
                   

@@ -1,10 +1,10 @@
 import React from "react";
-import StateLink from "../StateLink";
 
-function Navpane({ states }) {
+function Navpane() {
   return (
     <nav className="nav flex-column">
-      
+      <a className="nav-link active" aria-current="page" 
+      href="/dashboard/fedreps">Federal Representatives</a>
     </nav>
   );
 }

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Container from "../components/Container";
 import Navpane from "../components/Navpane";
-import SummaryRow from "../components/SummaryRow";
 
 function Dashboard() {
  
@@ -15,15 +13,16 @@ function Dashboard() {
   
   return (
     <Container>
+    <div className="container vh-100">
       <div className="row h-100 mx-5" style={styles.rowStyle}>
-        <div className="col-4 border border-5">
+        <div className="col-3 border border-5">
           <Navpane  />
         </div>
-        <div className="col-8 border border-5 p-4">
-          <SummaryRow />
+        <div className="col-9 border border-5 p-4">
         </div>
       </div>
-    </Container>
+      </div>
+      </Container>
   );
 }
 

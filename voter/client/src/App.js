@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import FedReps from "./pages/FedReps";
 import Navbar from "../src/components/Navbar";
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
       </Route>
       <Route exact path="/dashboard">
       <Dashboard/>
+      </Route>
+      <Route exact path="/dashboard/fedreps">
+      <FedReps/>
       </Route>
       <Route exact path="/login">
       <Login/>
