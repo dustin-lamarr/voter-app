@@ -19,23 +19,26 @@ function SummaryRow() {
 
   console.log(members);
   return (
-    <div className="row">
-      <div className="col-4"> 
-        <img className="img-thumbnail" src="https://via.placeholder.com/100" alt="placeholder"></img>
-      </div> 
-      <div className="col-8">
-        <ul className="justify-start">
+    
+        <ul className="justify-start list-unstyled">
           {members.map((member) => {
             return (
             <Quickview key={member.id}>
+              <div className="row p-2">
+              <div className="col-4">
+                <img src="https://via.placeholder.com/100" className="img-thumbnail" alt="placeholder"/>
+              </div>
+              <div className="col-8">
               <p>{member.first_name} {member.last_name} 
               Party: {member.party} State: {member.state}</p>
+              </div>
+              </div>
               </Quickview>
             )
           })}
         </ul>
-      </div>
-    </div>
+      
+    
   );
 }
 

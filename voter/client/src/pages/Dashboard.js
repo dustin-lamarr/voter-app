@@ -6,6 +6,12 @@ import SummaryRow from "../components/SummaryRow";
 
 function Dashboard() {
   const [states, getStates] = useState([]);
+
+  const styles = {
+    rowStyle: {
+      background: "white"
+    }
+  }
   
   useEffect(() => {
     axios.get("./states.json").then((res) => {
@@ -15,11 +21,11 @@ function Dashboard() {
 
   return (
     <Container>
-      <div className="row h-100">
+      <div className="row h-100 mx-5" style={styles.rowStyle}>
         <div className="col-4 border border-5">
           <Navpane states={states} />
         </div>
-        <div className="col-8 border border-5">
+        <div className="col-8 border border-5 p-4">
           <SummaryRow />
         </div>
       </div>

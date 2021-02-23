@@ -5,7 +5,7 @@ function Navpane({ states }) {
   return (
     <nav className="nav flex-column">
       {states.map((estado, i) => {
-        return <StateLink key={i} state={estado} value={estado}></StateLink>;
+        return <StateLink key={i} state={estado} defaultValue={estado}></StateLink>;
       })}
     </nav>
   );

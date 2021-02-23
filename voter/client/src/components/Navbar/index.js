@@ -37,10 +37,10 @@ function Navbar() {
             </li> */}
             <li className="nav-item">
               <a
-                className="nav-link disabled"
-                href="/login"
-                tabindex="-1"
-                aria-disabled="true"
+                className="nav-link"
+                href="/dashboard"
+                tabIndex="-1"
+                aria-disabled="false"
               >
                 Dashboard
               </a>
