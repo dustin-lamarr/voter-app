@@ -2,24 +2,25 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Quickview from "../Quickview";
 
-function BioCard({ members }) {
- 
+function BioCard({ senator }) {
+ console.log(senator)
   return (
 
-<div class="card" >
-  <img src="https://via.placeholder.com/100.png" class="card-img-top" alt="..."></img>
-  <div class="card-body">
-    <h5 class="card-title">{members.name}</h5>
-    <p class="card-text">Some quick example text to </p>
+<div className="card" >
+  <img src="https://via.placeholder.com/100.png" className="card-img-top" 
+  alt="..."></img>
+  <div className="card-body">
+    <h5 className="card-title"> member name here</h5>
+    <p className="card-text">Some other info here </p>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
+  <ul className="list-group list-group-flush">
+    <li className="list-group-item">An item</li>
+    <li className="list-group-item">A second item</li>
+    <li className="list-group-item">A third item</li>
   </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+  <div className="card-body">
+    <a href="#" className="card-link">Twitter</a>
+    <a href="#" className="card-link">Facebook</a>
   </div>
 </div>
 
