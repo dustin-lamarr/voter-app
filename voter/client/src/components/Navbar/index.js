@@ -1,11 +1,19 @@
 import React from "react";
 
 function Navbar() {
+  const styles = {
+    navStyle: {
+      background: "#000b1a",
+      color: "white",
+      height: "100px"
+    }
+  }
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom border-3 shadow-sm">
+    <nav className="navbar navbar-expand-lg navbar-dark border-bottom border-3 shadow-sm" style={styles.navStyle}>
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
-          <img className="" src="/images/voter-logo.png" alt="voter logo"/>
+          <img src="/images/voter-logo-wht-bx.png" alt="voter logo" style={{height: "100px"}}/>
         </a>
         <button
           className="navbar-toggler"

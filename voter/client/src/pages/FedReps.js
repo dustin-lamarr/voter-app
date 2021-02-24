@@ -55,20 +55,35 @@ function FedReps() {
               
                 {senators.map((senator, i) => {
                   return ( <div className="col-sm-6">
-                  <BioCard senator={senator} key={i} />
+                  <BioCard 
+                  key={i}
+                  name={senator.name}
+                  role={senator.role}
+                  party={senator.party}
+                  twitter={senator.twitter_id}
+                  facebook={senator.facebook_account}
+                  nextElection={senator.next_election}
+                  />
                   </div>);
                 })}
               </div>
             <hr/>
-            <div className="row align-items-start">
+            <div className="row">
               
                 {reps.map((rep, i) => {
-                  return (
-                    <div className="col">
-                  <BioCard rep={rep} key={i} />
+                  return ( <div className="col-sm-3">
+                  <BioCard 
+                  key={i}
+                  name={rep.name}
+                  role={rep.role}
+                  party={rep.party}
+                  twitter={rep.twitter_id}
+                  facebook={rep.facebook_account}
+                  nextElection={rep.next_election}
+                  />
                   </div>);
                 })}
-              </div>        
+              </div>
           </div>
         </div>
       </div>

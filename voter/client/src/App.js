@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import FedReps from "./pages/FedReps";
+import Dossier from "./pages/Dossier";
 import Navbar from "../src/components/Navbar";
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
       </Route>
       <Route exact path="/dashboard/fedreps">
       <FedReps/>
+      </Route>
+      <Route exact path="/dashboard/fedreps/dossier">
+      <Dossier/>
       </Route>
       <Route exact path="/login">
       <Login/>
