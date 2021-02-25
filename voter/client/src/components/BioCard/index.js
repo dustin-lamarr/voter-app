@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-function BioCard({ name, role, party, twitter, facebook, nextElection }) {
+function BioCard({ name, role, party, twitter, facebook, nextElection, i }) {
   const partyName = party;
 
   return (
-    <div className="card">
+    <div className="card" key={i}>
       <img
         src="https://via.placeholder.com/100.png"
         className="card-img-top"
@@ -33,7 +33,7 @@ function BioCard({ name, role, party, twitter, facebook, nextElection }) {
         </li>
       </ul>
       <div className="card-footer">
-        <a href="/dashboard/fedreps/dossier">
+        <a href="/dashboard/dossier">
           <button type="button" className="btn btn-outline-success">
             More Info
           </button>
