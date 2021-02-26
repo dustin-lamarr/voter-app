@@ -2,7 +2,7 @@ import React from "react";
 import BioCard from "../BioCard";
 
 
-function Legislators({ senators, reps, handleClick }) {
+function Legislators({ senators, reps, onClick, doss }) {
 // const [senatorView, setSenatorView] = useState();
 
 
@@ -20,7 +20,8 @@ function Legislators({ senators, reps, handleClick }) {
                   twitter={senator.twitter_id}
                   facebook={senator.facebook_account}
                   nextElection={senator.next_election}
-                  onClick={handleClick}
+                  onClick={onClick}
+                  doss={doss}
                   />
                   </div>);
                 })}
@@ -38,6 +39,8 @@ function Legislators({ senators, reps, handleClick }) {
                   twitter={rep.twitter_id}
                   facebook={rep.facebook_account}
                   nextElection={rep.next_election}
+                  onClick={onClick}
+                  doss={doss}
                   />
                   </div>);
                 })}

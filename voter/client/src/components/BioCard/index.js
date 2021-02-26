@@ -1,6 +1,6 @@
 import React from "react";
 
-function BioCard({ name, role, party, twitter, facebook, nextElection, i }) {
+function BioCard({ name, role, party, twitter, facebook, nextElection, i, onClick }) {
   const partyName = party;
 
   return (
@@ -33,11 +33,13 @@ function BioCard({ name, role, party, twitter, facebook, nextElection, i }) {
         </li>
       </ul>
       <div className="card-footer">
-        <a href="/dashboard/dossier">
-          <button type="button" className="btn btn-outline-success">
+            <button type="button" className="btn btn-outline-success" 
+          onClick={(event) => onClick(event)
+          
+          }>
             More Info
           </button>
-        </a>
+        
       </div>
     </div>
   );
