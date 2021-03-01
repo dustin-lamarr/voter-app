@@ -18,7 +18,7 @@ const UserSchema = new Schema({
         trim: true,
         required: true
     },
-    address_2: {
+    address2: {
         type: String, 
         trim: true,
     },

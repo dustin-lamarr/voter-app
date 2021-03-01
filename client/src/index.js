@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import axios from "axios";
+import { AuthProvider } from "./utils/context";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  <AuthProvider>
     <App />
-  </React.StrictMode>,
+  </AuthProvider>,
   document.getElementById("root")
 );
