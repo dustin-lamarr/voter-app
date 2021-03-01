@@ -3,7 +3,7 @@ import axios from "axios";
 import SenatorPane from "./SenatePane";
 import RepPane from "./RepPane";
 
-function Dossier( {senators, reps, clicked, doss}) {
+function Dossier( {senators, reps, onClick, doss}) {
  
   
     if (senators) {

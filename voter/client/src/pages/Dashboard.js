@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Container from "../components/Container";
 import Navpane from "../components/Navpane";
-import Legislators from "../components/LegislatorView";
-import Dossier from "../components/Dossier";
-import { render } from "react-dom";
+import InfoWindow from "../components/InfoWindow";
 
 function Dashboard() {
   const styles = {
@@ -13,25 +11,12 @@ function Dashboard() {
     },
   };
 
-  
   const [legs, getLegs] = useState(false);
-  
-  const loadLegs = (event) => {
-    // event.preventDefault();
 
+  const loadLegs = (event) => {
     getLegs((legs) => !legs);
   };
 
-  const [doss, getDossier] = useState(false);
-  
-  const loadDossier = (event) => {
-    // event.preventDefault();
-    console.log(event.target);
-    getDossier((doss) => !doss);
-    console.log(doss);
-  };
-
- 
   const [senators, getSenators] = useState([]);
   const senAPI =
     "https://api.propublica.org/congress/v1/members/senate/ut/current.json";
@@ -51,12 +36,14 @@ function Dashboard() {
   useEffect(() => {
     axios
       .get(houseAPI, {
-        headers: { "X-API-Key": "IWc4gzoEbejd3CUB2eNz5EMyKsgT9MC7EFmz7M6A" },
+        headers: { "X-API-Key": "IWc4gzoEbejd3CUB2eNz5EMyKsgT9MC7EFmz7M6A"},
       })
       .then((res) => {
         getReps(res.data.results);
       });
   }, []);
+
+console.log(reps)
 
   return (
     <Container>
@@ -66,21 +53,7 @@ function Dashboard() {
             <Navpane onClick={loadLegs} legs={legs} />
           </div>
           <div className="col-9 border border-5 p-4">
-            {legs === true ? (
-              <Legislators reps={reps} senators={senators} />
-            ) : (
-              ""
-            )}
-            {doss === true ? (
-              <Dossier
-                reps={reps}
-                senators={senators}
-                onClick={loadDossier}
-                doss={doss}
-                />
-            ) : (
-              ""
-            )}
+            <InfoWindow reps={reps} senators={senators} />
           </div>
         </div>
       </div>

@@ -137,11 +137,10 @@ function Signup() {
                 className="btn btn-dark mt-3"
                 style={styles.buttonColor}
               >
-                Login
+                Next
               </button>
             </form>
           </div>
-
           <div className="col-4"></div>
         </div>
       </Container>
