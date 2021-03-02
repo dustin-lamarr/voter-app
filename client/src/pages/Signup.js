@@ -26,8 +26,8 @@ export function Signup() {
     });
   }, []);
 
-  const [login, setLogin] = useState({
-    username: "",
+  const [loginData, setLogin] = useState({
+    email: "",
     password: "",
   });
   const [userData, setUserData] = useState({
@@ -36,7 +36,7 @@ export function Signup() {
     address: "",
     address2: "",
     city: "",
-    states: "",
+    estado: "",
     zip: "",
   });
   const { auth, setAuth } = useAuth();
@@ -50,16 +50,35 @@ export function Signup() {
 
   function _handleChange(event) {
     const { name, value } = event.target;
-    setLogin({ ...login, [name]: value });
+    setLogin({ ...loginData, [name]: value });
     setUserData({ ...userData, [name]: value });
   }
 
   function _handleSubmit(event) {
     event.preventDefault();
-    const { username, password } = login;
+    const { email, password } = loginData;
+    const {
+      first_name,
+      last_name,
+      address,
+      address2,
+      city,
+      estado,
+      zip,
+    } = userData;
 
     apiAuth
-      .register(username, password)
+      .signup(
+        email,
+        password,
+        first_name,
+        last_name,
+        address,
+        address2,
+        city,
+        estado,
+        zip
+      )
       .then((token) => {
         setAuth({ ...auth, token });
         setTimeout(() => {
@@ -155,13 +174,13 @@ export function Signup() {
                   <select
                     id="stateInput"
                     className="form-select"
-                    value={userData.states}
+                    // value={userData.states}
                   >
                     <option defaultValue>Choose...</option>
                     {states.map((estado, i) => {
                       return (
                         <option
-                          value={estado}
+                          value={userData.estado}
                           key={i}
                           style={styles.optionsColor}
                         >
@@ -179,7 +198,7 @@ export function Signup() {
                     type="text"
                     className="form-control"
                     id="zipInput"
-                    value={userData.email}
+                    value={userData.zip}
                     onChange={_handleChange}
                   />
                 </div>
@@ -192,7 +211,7 @@ export function Signup() {
                 className="form-control"
                 id="emailInput"
                 placeholder="name@example.com"
-                value={login.email}
+                value={loginData.email}
                 onChange={_handleChange}
               ></input>
               <label htmlFor="signupPassword" className="form-label pt-3">
@@ -203,14 +222,13 @@ export function Signup() {
                 className="form-control"
                 id="passwordInput"
                 placeholder=""
-                value={login.password}
+                value={loginData.password}
                 onChange={_handleChange}
               ></input>
               <button
                 type="button"
                 className="btn btn-dark mt-3"
-                style={styles.buttonColor}
-              >
+                style={styles.buttonColor}>
                 Next
               </button>
             </form>

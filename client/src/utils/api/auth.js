@@ -1,9 +1,9 @@
 import axios from "axios";
 
-function login(username, password) {
+function login(email, password) {
   return axios
     .post("api/auth/login", {
-      username,
+      email,
       password,
     })
     .then((res) => {
@@ -12,11 +12,18 @@ function login(username, password) {
     });
 }
 
-function register(username, password) {
+function signup(email, password,  first_name, last_name, address, address2, city, estado, zip) {
   return axios
-    .post("api/auth/register", {
-      username,
+    .post("api/auth/signup", {
+      email,
       password,
+      first_name,
+      last_name,
+      address,
+      address2,
+      city,
+      estado,
+      zip
     })
     .then((res) => {
       setAuth({ token: res.data.token });
@@ -49,7 +56,7 @@ function setDefaults(token) {
 export const apiAuth = {
   login,
   logout,
-  register,
+  signup,
   getAuth,
   setAuth,
 };

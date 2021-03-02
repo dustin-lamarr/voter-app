@@ -2,7 +2,7 @@ const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
 const config = require("../../config/database");
-const { User } = require("../../app/models");
+const { User, Profile } = require("../../app/models");
 
 genToken = (user) => {
   return jwt.sign(
@@ -16,23 +16,42 @@ genToken = (user) => {
   );
 };
 
-router.post("/register", async function (req, res, next) {
+router.post("/signup", async function (req, res, next) {
   try {
-    if (!req.body.username || !req.body.password) {
-      res.json({ success: false, msg: "Please pass username and password." });
+    if (!req.body.email || !req.body.password) {
+      res.json({ success: false, msg: "Please pass email and password." });
     } else {
       var newUser = new User({
-        username: req.body.username,
+        email: req.body.email,
         password: req.body.password,
       });
 
       newUser.save(function (err) {
         if (err) {
-          return res.json({ success: false, msg: "Username already exists." });
+          return res.json({ success: false, msg: "email already exists." });
         }
         var token = genToken(newUser.toJSON());
 
         res.json({ success: true, token: token });
+      });
+
+      var newProfile = new Profile({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        address: req.body.address,
+        address2: req.body.address2,
+        city: req.body.city,
+        estado: req.body.estado,
+        zip: req.body.zip,
+      });
+
+      newProfile.save(function (err) {
+        if (err) {
+          return res.json({ success: false, msg: "profile not created" });
+        }
+      
+
+        res.json({ success: true, msg: "great success!" });
       });
     }
   } catch (err) {
@@ -44,7 +63,7 @@ router.post("/login", async function (req, res, next) {
   try {
     User.findOne(
       {
-        username: req.body.username,
+        email: req.body.email,
       },
       function (err, user) {
         if (err) throw err;
