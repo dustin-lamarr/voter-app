@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import Container from "../components/Container";
 import Navpane from "../components/Navpane";
 import InfoWindow from "../components/InfoWindow";
 
-export function Profile() {
+export function Dashboard({ props, children }) {
   const styles = {
     rowStyle: {
       background: "white",
@@ -16,14 +15,13 @@ export function Profile() {
       <div className="container">
         <div className="row mx-5" style={styles.rowStyle}>
           <div className="col-3 border border-5">
-            <Navpane  />
+            <Navpane props={props}>{children}</Navpane>
           </div>
           <div className="col-9 border border-5 p-4">
-            <InfoWindow  />
+            <InfoWindow props={props} />
           </div>
         </div>
       </div>
     </Container>
   );
 }
-

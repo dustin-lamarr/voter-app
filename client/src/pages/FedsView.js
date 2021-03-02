@@ -3,8 +3,9 @@ import { apiFeds } from "../utils/api";
 import Container from "../components/Container";
 import Navpane from "../components/Navpane";
 import InfoWindow from "../components/InfoWindow";
+import Dashboard from "../components/Dashboard";
 
-export function Dashboard() {
+export function FedsView() {
   const styles = {
     rowStyle: {
       background: "white",
@@ -31,16 +32,7 @@ export function Dashboard() {
 
   return (
     <Container>
-      <div className="container">
-        <div className="row mx-5" style={styles.rowStyle}>
-          <div className="col-3 border border-5">
-            <Navpane onClick={loadLegs} legs={legs} />
-          </div>
-          <div className="col-9 border border-5 p-4">
-            <InfoWindow reps={reps} senators={senators} />
-          </div>
-        </div>
-      </div>
+    <Dashboard senators={senators} reps={reps}></Dashboard>
     </Container>
   );
 }
