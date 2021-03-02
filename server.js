@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("./config/database");
 const routes = require("./routes");
-const { User } = require("./voter/models");
+const { User } = require("./app/models");
 const cors = require("cors");
 const app = express();
 

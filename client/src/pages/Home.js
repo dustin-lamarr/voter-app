@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "../components/Container";
 
-function Home() {
+export function Home() {
 const jumbotron = {
     jumboBG: {
         background: "white"
@@ -16,5 +16,3 @@ const jumbotron = {
         </Container>
     )
 }
-
-export default Home;

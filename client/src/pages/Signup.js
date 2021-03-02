@@ -5,7 +5,7 @@ import { apiAuth } from "../utils/api";
 import { useAuth } from "../utils/context";
 import Container from "../components/Container";
 
-function Signup() {
+export function Signup() {
   const styles = {
     textColor: {
       color: "white",
@@ -26,9 +26,18 @@ function Signup() {
     });
   }, []);
 
-  const [state, setState] = useState({
+  const [login, setLogin] = useState({
     username: "",
     password: "",
+  });
+  const [userData, setUserData] = useState({
+    first_name: "",
+    last_name: "",
+    address: "",
+    address2: "",
+    city: "",
+    states: "",
+    zip: "",
   });
   const { auth, setAuth } = useAuth();
   const history = useHistory();
@@ -41,12 +50,13 @@ function Signup() {
 
   function _handleChange(event) {
     const { name, value } = event.target;
-    setState({ ...state, [name]: value });
+    setLogin({ ...login, [name]: value });
+    setUserData({ ...userData, [name]: value });
   }
 
   function _handleSubmit(event) {
     event.preventDefault();
-    const { username, password } = state;
+    const { username, password } = login;
 
     apiAuth
       .register(username, password)
@@ -84,7 +94,7 @@ function Signup() {
                     className="form-control"
                     placeholder="First name"
                     aria-label="First name"
-                    value={state.first_name}
+                    value={userData.first_name}
                     onChange={_handleChange}
                   />
                 </div>
@@ -94,7 +104,7 @@ function Signup() {
                     className="form-control"
                     placeholder="Last name"
                     aria-label="Last name"
-                    value={state.last_name}
+                    value={userData.last_name}
                     onChange={_handleChange}
                   />
                 </div>
@@ -108,7 +118,7 @@ function Signup() {
                   className="form-control"
                   id="addressInput"
                   placeholder="1234 Main St"
-                  value={state.address}
+                  value={userData.address}
                   onChange={_handleChange}
                 />
               </div>
@@ -121,7 +131,7 @@ function Signup() {
                   className="form-control"
                   id="addressInput2"
                   placeholder="Apartment, studio, or floor"
-                  value={state.address2}
+                  value={userData.address2}
                   onChange={_handleChange}
                 />
               </div>
@@ -134,7 +144,7 @@ function Signup() {
                     type="text"
                     className="form-control"
                     id="cityInput"
-                    value={state.city}
+                    value={userData.city}
                     onChange={_handleChange}
                   />
                 </div>
@@ -142,10 +152,13 @@ function Signup() {
                   <label htmlFor="stateInput" className="form-label">
                     State
                   </label>
-                  <select id="stateInput" className="form-select" value={state.value}>
+                  <select
+                    id="stateInput"
+                    className="form-select"
+                    value={userData.states}
+                  >
                     <option defaultValue>Choose...</option>
                     {states.map((estado, i) => {
-                      console.log(estado, i);
                       return (
                         <option
                           value={estado}
@@ -162,7 +175,13 @@ function Signup() {
                   <label htmlFor="zipInput" className="form-label">
                     Zip
                   </label>
-                  <input type="number" className="form-control" id="zipInput" />
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="zipInput"
+                    value={userData.email}
+                    onChange={_handleChange}
+                  />
                 </div>
               </div>
               <label htmlFor="signupEmail" className="form-label">
@@ -173,6 +192,8 @@ function Signup() {
                 className="form-control"
                 id="emailInput"
                 placeholder="name@example.com"
+                value={login.email}
+                onChange={_handleChange}
               ></input>
               <label htmlFor="signupPassword" className="form-label pt-3">
                 Password
@@ -182,6 +203,8 @@ function Signup() {
                 className="form-control"
                 id="passwordInput"
                 placeholder=""
+                value={login.password}
+                onChange={_handleChange}
               ></input>
               <button
                 type="button"
@@ -198,5 +221,3 @@ function Signup() {
     </div>
   );
 }
-
-export default Signup;

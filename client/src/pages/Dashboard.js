@@ -4,7 +4,7 @@ import Container from "../components/Container";
 import Navpane from "../components/Navpane";
 import InfoWindow from "../components/InfoWindow";
 
-function Dashboard() {
+export function Dashboard() {
   const styles = {
     rowStyle: {
       background: "white",
@@ -61,4 +61,4 @@ console.log(reps)
   );
 }
 
-export default Dashboard;
+

@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "../components/Container";
 
-function Login() {
+export function Login() {
   const styles = {
     textColor: {
       color: "white",
@@ -66,4 +66,3 @@ function Login() {
   );
 }
 
-export default Login;
