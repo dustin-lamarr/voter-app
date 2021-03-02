@@ -50,6 +50,7 @@ export function Signup() {
 
   function _handleChange(event) {
     const { name, value } = event.target;
+    console.log(event.target.value)
     setLogin({ ...loginData, [name]: value });
     setUserData({ ...userData, [name]: value });
   }
@@ -87,7 +88,7 @@ export function Signup() {
       })
       .catch((err) => {
         // Choose your error notification
-        // console.log("err", err);
+        console.log("err", err);
       });
   }
 
@@ -110,6 +111,7 @@ export function Signup() {
                 <div className="col-sm-6">
                   <input
                     type="text"
+                    name="fname"
                     className="form-control"
                     placeholder="First name"
                     aria-label="First name"
@@ -120,6 +122,7 @@ export function Signup() {
                 <div className="col-sm-6">
                   <input
                     type="text"
+                    name="lname"
                     className="form-control"
                     placeholder="Last name"
                     aria-label="Last name"
@@ -134,6 +137,7 @@ export function Signup() {
                 </label>
                 <input
                   type="text"
+                  name="address"
                   className="form-control"
                   id="addressInput"
                   placeholder="1234 Main St"
@@ -147,6 +151,7 @@ export function Signup() {
                 </label>
                 <input
                   type="text"
+                  name="address2"
                   className="form-control"
                   id="addressInput2"
                   placeholder="Apartment, studio, or floor"
@@ -161,6 +166,7 @@ export function Signup() {
                   </label>
                   <input
                     type="text"
+                    name="city"
                     className="form-control"
                     id="cityInput"
                     value={userData.city}
@@ -174,15 +180,18 @@ export function Signup() {
                   <select
                     id="stateInput"
                     className="form-select"
-                    // value={userData.states}
+                    value={userData.estado}
+                    name="state"
                   >
                     <option defaultValue>Choose...</option>
                     {states.map((estado, i) => {
                       return (
                         <option
                           value={userData.estado}
+                          name="stateoption"
                           key={i}
                           style={styles.optionsColor}
+                          onChange={_handleChange}
                         >
                           {estado}
                         </option>
@@ -196,6 +205,7 @@ export function Signup() {
                   </label>
                   <input
                     type="text"
+                    name="zip"
                     className="form-control"
                     id="zipInput"
                     value={userData.zip}
@@ -208,6 +218,7 @@ export function Signup() {
               </label>
               <input
                 type="email"
+                name="email"
                 className="form-control"
                 id="emailInput"
                 placeholder="name@example.com"
@@ -219,6 +230,7 @@ export function Signup() {
               </label>
               <input
                 type="password"
+                name="password"
                 className="form-control"
                 id="passwordInput"
                 placeholder=""

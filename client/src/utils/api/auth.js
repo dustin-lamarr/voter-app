@@ -12,7 +12,7 @@ function login(email, password) {
     });
 }
 
-function signup(email, password,  first_name, last_name, address, address2, city, estado, zip) {
+function signup(email, password, first_name, last_name, address, address2, city, estado, zip) {
   return axios
     .post("api/auth/signup", {
       email,
