@@ -50,7 +50,6 @@ export function Signup() {
 
   function _handleChange(event) {
     const { name, value } = event.target;
-    console.log(event.target.value)
     setLogin({ ...loginData, [name]: value });
     setUserData({ ...userData, [name]: value });
   }
@@ -111,7 +110,7 @@ export function Signup() {
                 <div className="col-sm-6">
                   <input
                     type="text"
-                    name="fname"
+                    name="first_name"
                     className="form-control"
                     placeholder="First name"
                     aria-label="First name"
@@ -122,7 +121,7 @@ export function Signup() {
                 <div className="col-sm-6">
                   <input
                     type="text"
-                    name="lname"
+                    name="last_name"
                     className="form-control"
                     placeholder="Last name"
                     aria-label="Last name"
@@ -180,8 +179,9 @@ export function Signup() {
                   <select
                     id="stateInput"
                     className="form-select"
-                    value={userData.estado}
-                    name="state"
+                    // value={userData.estado}
+                    // name="state"
+                    onChange={_handleChange}
                   >
                     <option defaultValue>Choose...</option>
                     {states.map((estado, i) => {
@@ -238,7 +238,7 @@ export function Signup() {
                 onChange={_handleChange}
               ></input>
               <button
-                type="button"
+                type="submit"
                 className="btn btn-dark mt-3"
                 style={styles.buttonColor}>
                 Next

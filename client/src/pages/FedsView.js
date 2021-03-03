@@ -11,14 +11,9 @@ export function FedsView() {
     },
   };
 
-  const [legs, getLegs] = useState(false);
-  const loadLegs = (event) => {
-    getLegs((legs) => !legs);
-  };
-
-  const [stateLegs, getStateLegs] = useState([]);
   const [senators, getSenators] = useState([]);
   const [reps, getReps] = useState([]);
+  const [feds, getFeds] = useState([]);
 
   useEffect(() => {
     apiFeds.senAPI().then((res) => {
@@ -27,11 +22,14 @@ export function FedsView() {
     apiFeds.houseAPI().then((res) => {
       getReps(res.data.results);
     });
+    apiFeds.fedPhotoAPI().then((res) => {
+      getFeds(res.data.officials);
+    })
   }, []);
-
+console.log(feds)
   return (
     <Container>
-    <Dashboard senators={senators} reps={reps}>
+    <Dashboard senators={senators} reps={reps} photos={feds}>
     <div className="row">
               
               {senators.map((senator, i) => {

@@ -26,6 +26,7 @@ function signup(email, password, first_name, last_name, address, address2, city,
       zip
     })
     .then((res) => {
+      console.log(res)
       setAuth({ token: res.data.token });
       return res.data.token;
     });

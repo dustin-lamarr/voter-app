@@ -16,7 +16,7 @@ export function StateView() {
 
   useEffect(() => {
     apiStates.stateAPI().then((res) => {
-    getStateLegs(res.data.results);
+    getStateLegs(res.data);
     console.log(stateLegs)
     });
   }, []);
