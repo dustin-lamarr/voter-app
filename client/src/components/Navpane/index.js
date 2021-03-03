@@ -1,6 +1,6 @@
 import React from "react";
 
-function Navpane({ onClick }) {
+function Navpane(props) {
   const styles = {
     linkButton: {
       color: "#001839",
@@ -8,33 +8,34 @@ function Navpane({ onClick }) {
   };
   return (
     <nav className="nav flex-column list-group py-3">
-      <button
-        className="nav-link list-group-item list-group-item-action border-0 h6"
+      <a
+        className="btn nav-link list-group-item list-group-item-action border-0 h6"
+        name="feds"
         aria-current="page"
         type="button"
         style={styles.linkButton}
-        onClick={(event) => onClick(event)}
+        href="/dashboard/feds"
       >
         Federal Legislators
-      </button>
-      <button
-        className="nav-link list-group-item list-group-item-action border-0 h6"
+      </a>
+      <a
+        className="btn nav-link list-group-item list-group-item-action border-0 h6"
         aria-current="page"
         type="button"
         style={styles.linkButton}
-        onClick={(event) => onClick(event)}
+        href="/dashboard/state"
       >
         State Legislators
-      </button>
-      <button
-        className="nav-link list-group-item list-group-item-action border-0 h6"
+      </a>
+      <a
+        className="btn nav-link list-group-item list-group-item-action border-0 h6"
         aria-current="page"
         type="button"
         style={styles.linkButton}
-        onClick={(event) => onClick(event)}
+        href="/dashboard/municipal"
       >
         Municipal Legislators
-      </button>
+      </a>
     </nav>
   );
 }

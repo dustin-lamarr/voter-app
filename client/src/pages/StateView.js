@@ -1,37 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { apiFeds } from "../utils/api";
+import { apiStates } from "../utils/api";
 import Container from "../components/Container";
 import Dashboard from "../components/Dashboard";
 import BioCard from "../components/BioCard";
 
-export function FedsView() {
+export function StateView() {
   const styles = {
     rowStyle: {
       background: "white",
     },
   };
 
-  const [legs, getLegs] = useState(false);
-  const loadLegs = (event) => {
-    getLegs((legs) => !legs);
-  };
-
   const [stateLegs, getStateLegs] = useState([]);
-  const [senators, getSenators] = useState([]);
-  const [reps, getReps] = useState([]);
+
 
   useEffect(() => {
-    apiFeds.senAPI().then((res) => {
-      getSenators(res.data.results);
-    });
-    apiFeds.houseAPI().then((res) => {
-      getReps(res.data.results);
+    apiStates.stateAPI().then((res) => {
+    getStateLegs(res.data.results);
+    console.log(stateLegs)
     });
   }, []);
 
   return (
     <Container>
-    <Dashboard senators={senators} reps={reps}>
+    {/* <Dashboard senators={senators} reps={reps}>
     <div className="row">
               
               {senators.map((senator, i) => {
@@ -67,7 +59,7 @@ export function FedsView() {
                 </div>);
               })}
         </div>
-    </Dashboard>
+    </Dashboard> */}
     </Container>
   );
 }

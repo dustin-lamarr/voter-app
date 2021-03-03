@@ -2,18 +2,11 @@ import React, { useState } from "react";
 import Legislators from "../LegislatorView";
 import Dossier from "../Dossier";
 
-function InfoWindow({ reps, senators, legs }) {
-    const [doss, getDossier] = useState(false);
-    
-    const loadDossier = (event) => {
-      // event.preventDefault();
-      console.log(event.target);
-      getDossier((doss) => !doss);
-      console.log(doss);
-    };
+function InfoWindow({ reps, senators }) {
+ 
     return (
         <>
-   {legs === true ? (
+   {/* {legs === true ? (
               <Legislators reps={reps} senators={senators} />
             ) : (
               ""
@@ -27,7 +20,7 @@ function InfoWindow({ reps, senators, legs }) {
                 />
             ) : (
               ""
-            )}
+            )} */}
         </>
     )
 }

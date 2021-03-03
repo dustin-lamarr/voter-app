@@ -1,6 +1,7 @@
 export { Home } from "./Home"
-export { Dashboard } from "./Dashboard"
+export { DashboardView } from "./DashboardView"
 export { Login } from "./Login"
 export { Profile } from "./Profile"
 export { Signup } from "./Signup"
 export { FedsView } from "./FedsView"
+export { StateView } from "./StateView"

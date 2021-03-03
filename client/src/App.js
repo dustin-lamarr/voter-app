@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { apiAuth } from "./utils/api";
 import { useAuth } from "./utils/context";
-import { Home, Login, Signup, Profile } from "./pages";
+import { Home, Login, Signup, Profile, DashboardView, FedsView, StateView } from "./pages";
 import Navbar from "../src/components/Navbar";
 import HiddenRoute from "./components/HiddenRoute"
 
@@ -32,6 +32,9 @@ function App() {
         <Route exact path="/" component={Home}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/signup" component={Signup}/>
+      <Route exact path="/dashboard" component={DashboardView}/>
+      <Route exact path="/dashboard/feds" component={FedsView}/>
+      <Route exact path="/dashboard/state" component={StateView}/>
       <HiddenRoute exact path="/profile" component={Profile}/>
       </Switch>
     </div>

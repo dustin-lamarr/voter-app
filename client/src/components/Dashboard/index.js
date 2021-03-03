@@ -1,9 +1,10 @@
 import React from "react";
-import Container from "../components/Container";
-import Navpane from "../components/Navpane";
-import InfoWindow from "../components/InfoWindow";
+import Container from "../Container";
+import InfoWindow from "../InfoWindow";
+import Navpane from "../Navpane";
 
-export function Dashboard({ props, children }) {
+function Dashboard(props) {
+  const { children, senators, reps } = props
   const styles = {
     rowStyle: {
       background: "white",
@@ -15,13 +16,15 @@ export function Dashboard({ props, children }) {
       <div className="container">
         <div className="row mx-5" style={styles.rowStyle}>
           <div className="col-3 border border-5">
-            <Navpane props={props}>{children}</Navpane>
+            <Navpane></Navpane>
           </div>
           <div className="col-9 border border-5 p-4">
-            <InfoWindow props={props} />
+          {children}
           </div>
         </div>
       </div>
     </Container>
   );
 }
+
+export default Dashboard;
