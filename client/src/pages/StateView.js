@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { apiStates } from "../utils/api";
+import { apiReps } from "../utils/api";
 import Container from "../components/Container";
 import Dashboard from "../components/Dashboard";
 import BioCard from "../components/BioCard";
@@ -15,18 +15,19 @@ export function StateView() {
 
 
   useEffect(() => {
-    apiStates.stateAPI().then((res) => {
-    getStateLegs(res.data);
-    console.log(stateLegs)
+    apiReps.civicAPI().then((res) => {
+   const stateReps =  res.data.officials.slice(7)
+    getStateLegs(stateReps);
+   
     });
   }, []);
-
+  console.log(stateLegs)
   return (
     <Container>
-    {/* <Dashboard senators={senators} reps={reps}>
+    <Dashboard stateLegs={stateLegs}>
     <div className="row">
               
-              {senators.map((senator, i) => {
+              {stateLegs.map((senator, i) => {
                 return ( <div className="col-sm-6">
                 <BioCard 
                 i={i}
@@ -44,7 +45,7 @@ export function StateView() {
           <hr/>
           <div className="row">
             
-              {reps.map((rep, i) => {
+              {stateLegs.map((rep, i) => {
                 return ( <div className="col-sm-3">
                 <BioCard 
                 i={i}
@@ -59,7 +60,7 @@ export function StateView() {
                 </div>);
               })}
         </div>
-    </Dashboard> */}
+    </Dashboard>
     </Container>
   );
 }

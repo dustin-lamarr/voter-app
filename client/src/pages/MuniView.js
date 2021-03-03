@@ -4,35 +4,29 @@ import Container from "../components/Container";
 import Dashboard from "../components/Dashboard";
 import BioCard from "../components/BioCard";
 
-export function FedsView() {
+export function MuniView() {
   const styles = {
     rowStyle: {
       background: "white",
     },
   };
 
-  const [senators, getSenators] = useState([]);
-  const [reps, getReps] = useState([]);
-  const [feds, getFeds] = useState([]);
+  const [muni, getMuni] = useState([]);
 
   useEffect(() => {
-    apiReps.senAPI().then((res) => {
-      getSenators(res.data.results);
-    });
-    apiReps.houseAPI().then((res) => {
-      getReps(res.data.results);
-    });
     apiReps.civicAPI().then((res) => {
-      getFeds(res.data.officials);
-    })
+      getMuni(res.data.results);
+    });
   }, []);
-console.log(feds)
+
+console.log(muni)
+
   return (
     <Container>
-    <Dashboard senators={senators} reps={reps} photos={feds}>
+    <Dashboard muni={muni}>
     <div className="row">
               
-              {senators.map((senator, i) => {
+              {muni.map((senator, i) => {
                 return ( <div className="col-sm-6">
                 <BioCard 
                 i={i}
@@ -50,8 +44,8 @@ console.log(feds)
           <hr/>
           <div className="row">
             
-              {reps.map((rep, i) => {
-                return ( <div className="col-sm-4">
+              {muni.map((rep, i) => {
+                return ( <div className="col-sm-3">
                 <BioCard 
                 i={i}
                 name={rep.name}

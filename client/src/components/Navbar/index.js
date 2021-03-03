@@ -38,11 +38,6 @@ function Navbar() {
                 Login
               </a>
             </li>
-            {/* <li className="nav-item">
-              <a className="nav-link" href="#">
-                Pricing
-              </a>
-            </li> */}
             <li className="nav-item">
               <a
                 className="nav-link"

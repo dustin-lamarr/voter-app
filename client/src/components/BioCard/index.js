@@ -5,14 +5,22 @@ function BioCard({ name, role, party, twitter, facebook, nextElection, i, onClic
 
   return (
     <div className="card" key={i}>
-      <img
-        src="https://via.placeholder.com/100.png"
-        className="card-img-top"
-        alt="..."
-      ></img>
+      
       <div className="card-body">
+        <div className="row">
+        <div className="col-sm">
+        <img
+        src="https://via.placeholder.com/100.png"
+        className="card-img-top img-thumbnail"
+        alt="..."
+        style={{height:"100px", width:"100px"}}
+      ></img>
+        </div>
+          <div className="col-sm">
         <h5 className="card-title">{name}</h5>
         <p className="card-text">{role}</p>
+        </div>
+        </div>
       </div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item">
@@ -33,10 +41,7 @@ function BioCard({ name, role, party, twitter, facebook, nextElection, i, onClic
         </li>
       </ul>
       <div className="card-footer">
-            <button type="button" className="btn btn-outline-success" 
-          onClick={(event) => onClick(event)
-          
-          }>
+            <button type="button" className="btn btn-outline-success">
             More Info
           </button>
         
