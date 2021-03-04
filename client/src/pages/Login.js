@@ -15,7 +15,7 @@ export function Login() {
       <div className="row">
         <div className="col-4"></div>
         <div
-          className="col-4 border rounded py-3 mb-5"
+          className="col-4 py-3 mb-5"
           style={styles.textColor}
         >
           <h3>Login to your Voter Dashboard</h3>

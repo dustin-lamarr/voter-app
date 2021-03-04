@@ -1,6 +1,5 @@
 import React from "react";
 import Container from "../Container";
-import InfoWindow from "../InfoWindow";
 import Navpane from "../Navpane";
 
 function Dashboard(props) {
@@ -13,16 +12,14 @@ function Dashboard(props) {
 
   return (
     <Container>
-      <div className="container">
         <div className="row mx-5" style={styles.rowStyle}>
-          <div className="col-3 border border-5">
+          <div className="col-3 border border-5 border-top-0">
             <Navpane></Navpane>
           </div>
-          <div className="col-9 border border-5 p-4">
+          <div className="col-9 border border-5 border-top-0 p-2">
           {children}
           </div>
         </div>
-      </div>
     </Container>
   );
 }

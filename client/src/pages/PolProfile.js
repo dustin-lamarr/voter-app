@@ -1,11 +1,14 @@
 import React from "react";
 import Dashboard from "../components/Dashboard";
-import Navpane from "../components/Navpane";
+import Dossier from "../components/Dossier";
 
-export function DashboardView() {
+export function PolProfile(props) {
+    
     return (
 <Dashboard>
-    
+    <Dossier  >
+
+    </Dossier>
 </Dashboard> 
     )
 };

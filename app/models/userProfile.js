@@ -27,6 +27,11 @@ const ProfileSchema = new Schema({
         trim: true,
         required: true
     },
+    state: {
+        type: String, 
+        trim: true,
+        required: true
+    },
     zip: {
         type: Number, 
         trim: true,

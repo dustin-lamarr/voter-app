@@ -44,7 +44,8 @@ export function Signup() {
 
   useEffect(() => {
     if (auth) {
-      history.push("/profile");
+      console.log(auth)
+      history.push("/dashboard");
     }
   }, []);
 
@@ -82,7 +83,7 @@ export function Signup() {
       .then((token) => {
         setAuth({ ...auth, token });
         setTimeout(() => {
-          history.push("/profile");
+          history.push("/dashboard");
         });
       })
       .catch((err) => {

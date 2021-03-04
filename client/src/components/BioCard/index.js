@@ -1,16 +1,15 @@
 import React from "react";
 
-function BioCard({ name, role, party, twitter, facebook, nextElection, i, onClick }) {
+function BioCard({ name, role, party, twitter, facebook, nextElection, i, feds }) {
   const partyName = party;
 
   return (
     <div className="card" key={i}>
-      
       <div className="card-body">
         <div className="row">
         <div className="col-sm">
         <img
-        src="https://via.placeholder.com/100.png"
+        src={feds}
         className="card-img-top img-thumbnail"
         alt="..."
         style={{height:"100px", width:"100px"}}
@@ -41,9 +40,9 @@ function BioCard({ name, role, party, twitter, facebook, nextElection, i, onClic
         </li>
       </ul>
       <div className="card-footer">
-            <button type="button" className="btn btn-outline-success">
+            <a type="button" className="btn btn-outline-success" href={`/dashboard/feds/${name=name.replace(/\s+/g, '')}`}>
             More Info
-          </button>
+          </a>
         
       </div>
     </div>

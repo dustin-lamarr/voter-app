@@ -3,7 +3,7 @@ import "./style.css"
 
 function Container({ children }) {
   
-  return <div className="container-fluid py-5" id="container-bg"> {children} </div>
+  return <div className="container-fluid" id="container-bg"> {children} </div>
 
 }
 

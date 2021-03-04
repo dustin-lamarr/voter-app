@@ -32,6 +32,27 @@ function signup(email, password, first_name, last_name, address, address2, city,
     });
 }
 
+// FOR FUTURE USE WITH VOTER PROFILE PREFERENCES 
+// function voterProfile(party, ) {
+//   return axios
+//     .post("api/auth/signup", {
+//       email,
+//       password,
+//       first_name,
+//       last_name,
+//       address,
+//       address2,
+//       city,
+//       estado,
+//       zip
+//     })
+//     .then((res) => {
+//       console.log(res)
+//       setAuth({ token: res.data.token });
+//       return res.data.token;
+//     });
+// }
+
 function logout() {
   localStorage.removeItem("authentication");
 }
