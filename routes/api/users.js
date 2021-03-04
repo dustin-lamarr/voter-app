@@ -12,9 +12,14 @@ router.get(
     try {
       var token = decode(getToken(req.headers));
       if (token) {
-        User.findById(token.id, {password: 0}, function (err, user) {
+        User.findById(token.id, {password: 0})
+        .populate("profile")
+        .then((user) => {
           return res.json(user);
-        });
+        }) 
+          // , function (err, user) {
+          // return res.json(user);
+       
       } else {
         return res.status(403).send({ success: false, msg: "Unauthorized." });
       }

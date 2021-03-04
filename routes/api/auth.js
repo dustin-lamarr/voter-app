@@ -21,21 +21,19 @@ router.post("/signup", async function (req, res, next) {
     if (!req.body.email || !req.body.password) {
       res.json({ success: false, msg: "Please pass email and password." });
     } else {
-      var newUser = new User({
+      var newUser = await new User({
         email: req.body.email,
         password: req.body.password,
       });
-
-      newUser.save(function (err) {
+      console.log(newUser);
+      var token 
+      await newUser.save(async function (err) {
         if (err) {
           return res.json({ success: false, msg: "email already exists." });
         }
-        var token = genToken(newUser.toJSON());
-
-        res.json({ success: true, token: token });
-      });
-
-      var newProfile = new Profile({
+        token=genToken(newUser.toJSON());
+        
+      var newProfile = await new Profile({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         address: req.body.address,
@@ -44,16 +42,20 @@ router.post("/signup", async function (req, res, next) {
         estado: req.body.estado,
         zip: req.body.zip,
       });
+      console.log(newProfile);
 
-      newProfile.save(function (err) {
+     await newProfile.save( async function (err) {
         if (err) {
           return res.json({ success: false, msg: "profile not created" });
         }
-      
 
-        res.json({ success: true, msg: "great success!" });
+      newUser.profile.push(newProfile._id)
+        await newUser.save();
+        res.json({ success: true, token: token });
       });
+    });
     }
+    
   } catch (err) {
     return res.status(500).json(err);
   }

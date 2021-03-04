@@ -180,16 +180,16 @@ export function Signup() {
                   <select
                     id="stateInput"
                     className="form-select"
-                    // value={userData.estado}
-                    // name="state"
+                    value={userData.estado}
+                    name="estado"
                     onChange={_handleChange}
                   >
                     <option defaultValue>Choose...</option>
                     {states.map((estado, i) => {
                       return (
                         <option
-                          value={userData.estado}
-                          name="stateoption"
+                          // value={userData.estado}
+                          // name="estado"
                           key={i}
                           style={styles.optionsColor}
                           onChange={_handleChange}

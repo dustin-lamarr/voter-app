@@ -27,7 +27,7 @@ const ProfileSchema = new Schema({
         trim: true,
         required: true
     },
-    state: {
+    estado: {
         type: String, 
         trim: true,
         required: true

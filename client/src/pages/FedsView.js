@@ -11,14 +11,26 @@ export function FedsView() {
     },
   };
 
-  const [userAddress, getUserAddress] = useState([]);
+  const [userAddress, getUserAddress] = useState(
+    { address: "1080 W Pleasant View Dr.",
+    address2: "",
+    city: "Pleasant View",
+    estado: "UT",
+    zip: "84404"
+    });
 
   useEffect(() => {
     apiUsers.getProfile().then((res) => {
-      // getUserAddress(res.data);
-      console.log(res.data)
+      const tempObject = {
+        address: res.data.profile[0].address,
+        address2: res.data.profile[0].address2,
+        city: res.data.profile[0].city,
+        estado: res.data.profile[0].estado,
+        zip: res.data.profile[0].zip
+      }
+      getUserAddress(tempObject);
     });
-  });
+  }, []);
 
 
   const [senators, getSenators] = useState([]);
@@ -26,16 +38,17 @@ export function FedsView() {
   const [feds, getFeds] = useState([]);
 
   useEffect(() => {
-    apiReps.senAPI().then((res) => {
+    apiReps.senAPI(userAddress).then((res) => {
+      console.log(res)
       getSenators(res.data.results);
     });
-    apiReps.houseAPI().then((res) => {
+    apiReps.houseAPI(userAddress).then((res) => {
       getReps(res.data.results);
     });
-    apiReps.civicAPI().then((res) => {
+    apiReps.civicAPI(userAddress).then((res) => {
       getFeds(res.data.officials);
     });
-  }, []);
+  }, [userAddress]);
 
   return (
     <Container>
