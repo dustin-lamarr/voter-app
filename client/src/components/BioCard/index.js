@@ -1,6 +1,6 @@
 import React from "react";
 
-function BioCard({ name, role, party, twitter, facebook, nextElection, i, feds }) {
+function BioCard({ name, role, party, twitter, facebook, nextElection, i, image }) {
   const partyName = party;
 
   return (
@@ -8,12 +8,13 @@ function BioCard({ name, role, party, twitter, facebook, nextElection, i, feds }
       <div className="card-body">
         <div className="row">
         <div className="col-sm">
+          { image !== "" &&
         <img
-        src={feds}
+        src={image}
         className="card-img-top img-thumbnail"
         alt="..."
         style={{height:"100px", width:"100px"}}
-      ></img>
+      ></img>}
         </div>
           <div className="col-sm">
         <h5 className="card-title">{name}</h5>

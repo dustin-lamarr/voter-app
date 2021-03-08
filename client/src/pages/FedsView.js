@@ -9,6 +9,9 @@ export function FedsView() {
     rowStyle: {
       background: "white",
     },
+    h4Color: {
+      color: "#6B000B"
+    }
   };
 
   const [userAddress, getUserAddress] = useState(
@@ -49,11 +52,13 @@ export function FedsView() {
       getFeds(res.data.officials);
     });
   }, [userAddress]);
-
+console.log(feds)
+console.log(userAddress)
   return (
     <Container>
       <Dashboard senators={senators} reps={reps} photos={feds.photoUrl}>
         <div className="row">
+        <h4 style={styles.h4Color}>United States Senate</h4>
           {senators.map((senator, i) => {
             return (
               <div className="col-sm-6">
@@ -72,6 +77,7 @@ export function FedsView() {
         </div>
         <hr />
         <div className="row">
+        <h4 style={styles.h4Color}>United States House of Representatives</h4>
           {reps.map((rep, i) => {
             return (
               <div className="col-sm-4">
