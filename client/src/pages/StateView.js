@@ -109,10 +109,10 @@ export function StateView() {
                   facebook={rep.facebook}
                   // nextElection={rep.next_election}
                 />
-              </div> */}
+              </div>
             );
           })}
-        </div>
+        </div> */}
       </Dashboard>
     </Container>
   );
