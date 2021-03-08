@@ -7,15 +7,15 @@ function BioCard({ name, role, party, twitter, facebook, nextElection, i, image 
     <div className="card" key={i}>
       <div className="card-body">
         <div className="row">
-        <div className="col-sm">
-          { image !== "" &&
+        {/* <div className="col-sm">
+          { image !== "" ? 
         <img
         src={image}
         className="card-img-top img-thumbnail"
         alt="..."
         style={{height:"100px", width:"100px"}}
-      ></img>}
-        </div>
+      ></img>: ""}
+        </div> */}
           <div className="col-sm">
         <h5 className="card-title">{name}</h5>
         <p className="card-text">{role}</p>

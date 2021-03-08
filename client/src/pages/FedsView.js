@@ -14,46 +14,52 @@ export function FedsView() {
     }
   };
 
-  const [userAddress, getUserAddress] = useState(
-    { address: "1080 W Pleasant View Dr.",
+  const [userAddress, getUserAddress] = useState({
+    address: "1080 W Pleasant View Dr.",
     address2: "",
     city: "Pleasant View",
     estado: "UT",
-    zip: "84404"
-    });
-
-  useEffect(() => {
-    apiUsers.getProfile().then((res) => {
-      const tempObject = {
-        address: res.data.profile[0].address,
-        address2: res.data.profile[0].address2,
-        city: res.data.profile[0].city,
-        estado: res.data.profile[0].estado,
-        zip: res.data.profile[0].zip
-      }
-      getUserAddress(tempObject);
-    });
-  }, []);
-
+    zip: "84404",
+  });
 
   const [senators, getSenators] = useState([]);
   const [reps, getReps] = useState([]);
   const [feds, getFeds] = useState([]);
 
+useEffect(() => {
+  if (!userAddress) {
+    return;
+  }
+  apiUsers.getProfile().then( (res) => {
+    const tempObject = {
+      address: res.data.profile[0].address,
+      address2: res.data.profile[0].address2,
+      city: res.data.profile[0].city,
+      estado: res.data.profile[0].estado,
+      zip: res.data.profile[0].zip
+    }
+    console.log(tempObject)
+    getUserAddress(tempObject);
+});
+}, []);
+
   useEffect(() => {
-    apiReps.senAPI(userAddress).then((res) => {
-      console.log(res)
-      getSenators(res.data.results);
-    });
-    apiReps.houseAPI(userAddress).then((res) => {
-      getReps(res.data.results);
-    });
-    apiReps.civicAPI(userAddress).then((res) => {
-      getFeds(res.data.officials);
-    });
+      apiReps.senAPI(userAddress).then((res) => {
+        console.log(res)
+        getSenators(res.data.results);
+      });
+      apiReps.houseAPI(userAddress).then((res) => {
+        getReps(res.data.results);
+      });
+      apiReps.civicAPI(userAddress).then((res) => {
+        getFeds(res.data.officials);
+      });
+      
   }, [userAddress]);
-console.log(feds)
-console.log(userAddress)
+
+  
+
+  
   return (
     <Container>
       <Dashboard senators={senators} reps={reps} photos={feds.photoUrl}>
@@ -77,7 +83,7 @@ console.log(userAddress)
         </div>
         <hr />
         <div className="row">
-        <h4 style={styles.h4Color}>United States House of Representatives</h4>
+        <h4 >United States House of Representatives</h4>
           {reps.map((rep, i) => {
             return (
               <div className="col-sm-4">

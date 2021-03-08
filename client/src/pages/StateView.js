@@ -4,14 +4,7 @@ import Container from "../components/Container";
 import Dashboard from "../components/Dashboard";
 import BioCard from "../components/BioCard";
 
-
 export function StateView() {
-  const styles = {
-    rowStyle: {
-      background: "white",
-    },
-  };
-
   const [userAddress, getUserAddress] = useState({
     address: "1080 W Pleasant View Dr.",
     address2: "",
@@ -20,8 +13,14 @@ export function StateView() {
     zip: "84404",
   });
 
+  const [stateLegs, getStateLegs] = useState([]);
+  const [roles, getRoles] = useState();
+
   useEffect(() => {
     apiUsers.getProfile().then((res) => {
+      if (!userAddress) {
+        return;
+      }
       const tempObject = {
         address: res.data.profile[0].address,
         address2: res.data.profile[0].address2,
@@ -33,46 +32,48 @@ export function StateView() {
     });
   }, []);
 
-  const [stateLegs, getStateLegs] = useState([]);
-  const [roles, getRoles] = useState();
-
   useEffect(() => {
     apiReps.civicAPI(userAddress).then((res) => {
-      const officesArray = res.data.offices
-      const officialsArray = res.data.officials
-console.log(res.data)
-const dataArray = [];
-for (const key in officialsArray) {
-  const politicianObject = {
-    name: officialsArray[key].name,
-    party: officialsArray[key].party,
-    twitter: "",
-    facebook: "",
-    role: "",
-    image: officialsArray[key].photoUrl ? officialsArray[key].photoUrl : ""
-  }
-  for (const social in officialsArray[key].channels){
-    if (officialsArray[key].channels[social].type === "Twitter"){
-      politicianObject.twitter = officialsArray[key].channels[social].id
-    }
-    if (officialsArray[key].channels[social].type === "Facebook"){
-      politicianObject.facebook = officialsArray[key].channels[social].id
-    }
-  }
-  for (const role in officesArray) {
-    if (officesArray[role].officialIndices[0] == key) {
-      politicianObject.role = officesArray[role].name
-    }
-  }
-  
-  dataArray.push(politicianObject)
-}
+      const officesArray = res.data.offices;
+      const officialsArray = res.data.officials;
+      const dataArray = [];
 
-getStateLegs(dataArray)
+      for (const key in officialsArray) {
+        const politicianObject = {
+          // ...userAddress,
+          name: officialsArray[key].name,
+          party: officialsArray[key].party,
+          twitter: "",
+          facebook: "",
+          role: "",
+          image: officialsArray[key].photoUrl
+            ? officialsArray[key].photoUrl
+            : "",
+        };
+        for (const social in officialsArray[key].channels) {
+          if (officialsArray[key].channels[social].type === "Twitter") {
+            politicianObject.twitter = officialsArray[key].channels[social].id;
+          }
+          if (officialsArray[key].channels[social].type === "Facebook") {
+            politicianObject.facebook = officialsArray[key].channels[social].id;
+          }
+        }
+        for (const role in officesArray) {
+          if (officesArray[role].officialIndices[0] == key) {
+            politicianObject.role = officesArray[role].name;
+          }
+        }
+
+        dataArray.push(politicianObject);
+      }
+
+      getStateLegs(dataArray);
     });
   }, [userAddress]);
-  console.log(stateLegs)
+
+  console.log(stateLegs);
   // console.log(userAddress)
+
   return (
     <Container>
       <Dashboard stateLegs={stateLegs}>
