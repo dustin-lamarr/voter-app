@@ -96,7 +96,7 @@ export function StateView() {
           })}
         </div>
         <hr />
-        <div className="row">
+        {/* <div className="row">
           {stateLegs.map((rep, i) => {
             return (
               <div className="col-sm-3">
@@ -109,7 +109,7 @@ export function StateView() {
                   facebook={rep.facebook}
                   // nextElection={rep.next_election}
                 />
-              </div>
+              </div> */}
             );
           })}
         </div>
