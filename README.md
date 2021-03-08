@@ -10,7 +10,7 @@ Passing
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
  
 ## Screenshots
-<img src="./images/voter-screenshot.png"></img>
+<img src="./voter-screenshot.png"></img>
 
 ## Tech/framework used
 HTML
