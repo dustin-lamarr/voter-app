@@ -43,7 +43,7 @@ export function Login() {
       .then((token) => {
         setAuth({ ...auth, token });
         setTimeout(() => {
-          history.push("/profile");
+          history.push("/dashboard");
         })
       })
       .catch((err) => {
