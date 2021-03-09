@@ -25,7 +25,7 @@ export function Login() {
 
   useEffect(() => {
     if (auth) {
-      history.push("/profile");
+      history.push("/dashboard");
     }
   }, []);
 
