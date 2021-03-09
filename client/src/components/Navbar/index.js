@@ -1,19 +1,26 @@
 import React from "react";
 
-function Navbar() {
+function Navbar({ auth, active, dashboard, home, login, signup }) {
   const styles = {
     navStyle: {
       background: "#000b1a",
       color: "white",
-      height: "100px"
-    }
-  }
+      height: "100px",
+    },
+  };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark border-bottom border-3 shadow-sm" style={styles.navStyle}>
+    <nav
+      className="navbar navbar-expand-lg navbar-dark border-bottom border-3"
+      style={styles.navStyle}
+    >
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
-          <img src="/images/voter-logo-wht-bx.png" alt="voter logo" style={{height: "100px"}}/>
+          <img
+            src="/images/voter-logo-wht-bx.png"
+            alt="voter logo"
+            style={{ height: "100px" }}
+          />
         </a>
         <button
           className="navbar-toggler"
@@ -29,24 +36,31 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
-                Home
-              </a>
+              
+                <a className={`nav-link ${home ? "active" : ""}`} aria-current="page" href="/">
+                  Home
+                </a>
+             
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/login">
-                Login
-              </a>
+              {!auth && (
+                <a className={`nav-link ${login ? "active" : ""}`} href="/login">
+                  Login
+                </a>
+              )}
             </li>
+
             <li className="nav-item">
-              <a
-                className="nav-link"
-                href="/dashboard"
-                tabIndex="-1"
-                aria-disabled="false"
-              >
-                Dashboard
-              </a>
+              {auth && (
+                <a
+                  className="nav-link"
+                  href="/dashboard"
+                  tabIndex="-1"
+                  aria-disabled="false"
+                >
+                  Dashboard
+                </a>
+              )}
             </li>
           </ul>
         </div>

@@ -67,18 +67,18 @@ router.post("/login", async function (req, res, next) {
       {
         email: req.body.email,
       },
-      function (err, user) {
+      function (err, email) {
         if (err) throw err;
 
-        if (!user) {
+        if (!email) {
           res.status(401).send({
             success: false,
             msg: "Unable to authenticate.",
           });
         } else {
-          user.comparePassword(req.body.password, function (err, isMatch) {
+          email.comparePassword(req.body.password, function (err, isMatch) {
             if (isMatch && !err) {
-              var token = genToken(user.toJSON());
+              var token = genToken(email.toJSON());
 
               res.json({ success: true, token: token });
             } else {

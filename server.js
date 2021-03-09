@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const config = require("./config/database");
 const routes = require("./routes");
 const { User } = require("./app/models");
 const cors = require("cors");
@@ -22,7 +21,13 @@ if (process.env.NODE_ENV === "production") {
 
 require("./config/passport")(User);
 
-mongoose.connect(config.database)
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/voter_user_db',
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+})
 
 // Add routes, both API and view
 app.use(routes);

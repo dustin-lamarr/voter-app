@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "../Container";
 import Navpane from "../Navpane";
+import Navbar from "../Navbar"
 
 function Dashboard(props) {
   const { children, senators, reps } = props
@@ -11,6 +12,8 @@ function Dashboard(props) {
   };
 
   return (
+    <>
+    <Navbar/>
     <Container>
         <div className="row mx-5" style={styles.rowStyle}>
           <div className="col-3 border border-5 border-top-0">
@@ -21,6 +24,7 @@ function Dashboard(props) {
           </div>
         </div>
     </Container>
+    </>
   );
 }
 
