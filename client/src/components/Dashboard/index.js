@@ -4,7 +4,7 @@ import Navpane from "../Navpane";
 import Navbar from "../Navbar"
 
 function Dashboard(props) {
-  const { children, senators, reps } = props
+  const { children } = props
   const styles = {
     rowStyle: {
       background: "white",

@@ -17,8 +17,8 @@ router.get(
         .then((user) => {
           return res.json(user);
         }) 
-          // , function (err, user) {
-          // return res.json(user);
+          , function (err, user) {
+          return res.json(user);}
        
       } else {
         return res.status(403).send({ success: false, msg: "Unauthorized." });

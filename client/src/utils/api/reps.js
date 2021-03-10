@@ -18,7 +18,7 @@ import axios from "axios";
 
 function civicAPI({ address, address2, city, estado, zip }){
   return axios
-  .get(`https://civicinfo.googleapis.com/civicinfo/v2/representatives?address=${address}${city}${estado}${zip}USA&includeOffices=true&key=AIzaSyAlZY6STbQRWB7UhWvmPp4YzinamHtOUzc`)
+  .get(`https://civicinfo.googleapis.com/civicinfo/v2/representatives?address=${address}${city}${estado}${zip}USA&includeOffices=true&levels=administrativeArea1&key=AIzaSyAlZY6STbQRWB7UhWvmPp4YzinamHtOUzc`)
 }
 
 export const apiReps = {

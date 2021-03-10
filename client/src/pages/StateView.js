@@ -14,7 +14,6 @@ export function StateView() {
   });
 
   const [stateLegs, getStateLegs] = useState([]);
-  const [roles, getRoles] = useState();
 
   useEffect(() => {
     apiUsers.getProfile().then((res) => {
@@ -37,7 +36,7 @@ export function StateView() {
       const officesArray = res.data.offices;
       const officialsArray = res.data.officials;
       const dataArray = [];
-
+console.log(officesArray)
       for (const key in officialsArray) {
         const politicianObject = {
           // ...userAddress,
@@ -49,6 +48,7 @@ export function StateView() {
           image: officialsArray[key].photoUrl
             ? officialsArray[key].photoUrl
             : "",
+          level: officialsArray[key].levels
         };
         for (const social in officialsArray[key].channels) {
           if (officialsArray[key].channels[social].type === "Twitter") {
@@ -63,16 +63,23 @@ export function StateView() {
             politicianObject.role = officesArray[role].name;
           }
         }
+        for (const level in officesArray) {
+          if (officesArray[level].officialIndices[0] == key) {
+            politicianObject.level = officesArray[level].levels[0];
+          }
+        }
+
 
         dataArray.push(politicianObject);
       }
-
+let filteredArray = dataArray.filter(levels => levels == "country")
+console.log(filteredArray)
       getStateLegs(dataArray);
     });
   }, [userAddress]);
 
   console.log(stateLegs);
-  // console.log(userAddress)
+  
 
   return (
     <Container>

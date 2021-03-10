@@ -44,11 +44,11 @@ useEffect(() => {
 }, []);
 
   useEffect(() => {
-      apiReps.senAPI(userAddress).then((res) => {
+      apiReps.senAPI(userAddress).then( async (res) => {
         console.log(res)
         getSenators(res.data.results);
       });
-      apiReps.houseAPI(userAddress).then((res) => {
+      apiReps.houseAPI(userAddress).then( async (res) => {
         getReps(res.data.results);
       });
       apiReps.civicAPI(userAddress).then((res) => {
@@ -56,8 +56,6 @@ useEffect(() => {
       });
       
   }, [userAddress]);
-
-  
 
   
   return (
@@ -83,7 +81,7 @@ useEffect(() => {
         </div>
         <hr />
         <div className="row">
-        <h4 >United States House of Representatives</h4>
+        <h4 style={styles.h4Color}>United States House of Representatives</h4>
           {reps.map((rep, i) => {
             return (
               <div className="col-sm-4">
