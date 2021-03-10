@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function Navbar({ home, dashboard, onClick, auth }) {
+function Navbar({ home, dashboard, onClick, auth, madeWith }) {
   const styles = {
     navStyle: {
       background: "#000b1a",
@@ -54,6 +54,21 @@ function Navbar({ home, dashboard, onClick, auth }) {
               
             </ul>
           )}
+            {madeWith && (
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a className="nav-link" aria-current="page" href="/login">
+                  Login
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" aria-current="page" href="/signup">
+                  Signup
+                </a>
+              </li>
+              
+            </ul>
+          )}
 
           {auth && (
             <ul className="navbar-nav">
@@ -70,6 +85,15 @@ function Navbar({ home, dashboard, onClick, auth }) {
             </ul>
           )}
         </div>
+      </div>
+      <div>
+      <a className="navbar-brand" href="/madewith" >
+          <img
+            src="/images/question.png"
+            alt="?"
+            style={{ height: "50px" }}
+          />
+        </a>
       </div>
     </nav>
   );
