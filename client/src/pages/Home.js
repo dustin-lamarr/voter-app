@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAuth } from "../utils/context"
+import { useHistory } from "react-router-dom";
 import Container from "../components/Container";
 import Navbar from "../components/Navbar";
 
@@ -11,6 +13,14 @@ const jumbotron = {
         color: "#6B000B"
     }
 }
+const { auth, setAuth } = useAuth();
+const history = useHistory();
+
+useEffect(() => {
+  if (auth) {
+    history.push("/dashboard");
+  }
+}, []);
     return (
         <>
         <Navbar home={"home"}/>
