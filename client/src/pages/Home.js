@@ -34,7 +34,7 @@ useEffect(() => {
                 <div className="col">
                     <div className="row">
                         <div className="col" style={jumbotron.jumboP}>
-                        <h3>Welcome to all the information you need to make your representatives work for you, in one conveninent location. </h3>
+                        <h3>Make your representatives work for you. </h3>
                        <h3 className="text-muted"> Welcome to Voter</h3>
                  
                         </div>
