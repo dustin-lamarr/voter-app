@@ -82,12 +82,12 @@ console.log(filteredArray)
   
 
   return (
-    <Container>
+   
       <Dashboard stateLegs={stateLegs}>
         <div className="row">
           {stateLegs.map((legs, i) => {
             return (
-              <div className="col-sm-6">
+              <div className="col-sm-6 pb-2">
                 <BioCard
                   i={i}
                   name={legs.name}
@@ -121,6 +121,6 @@ console.log(filteredArray)
           })}
         </div> */}
       </Dashboard>
-    </Container>
+   
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function Navbar({ home, dashboard, onClick, auth }) {
+function Navbar({ home, dashboard, onClick }) {
   const styles = {
     navStyle: {
       background: "#000b1a",

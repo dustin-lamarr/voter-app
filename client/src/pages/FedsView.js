@@ -59,7 +59,7 @@ useEffect(() => {
 
   
   return (
-    <Container>
+    
       <Dashboard senators={senators} reps={reps} photos={feds.photoUrl}>
         <div className="row">
         <h4 style={styles.h4Color}>United States Senate</h4>
@@ -99,6 +99,6 @@ useEffect(() => {
           })}
         </div>
       </Dashboard>
-    </Container>
+    
   );
 }
