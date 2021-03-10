@@ -51,11 +51,7 @@ function Navbar({ home, dashboard, onClick, auth }) {
                   Signup
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="/dashboard">
-                  Dashboard
-                </a>
-              </li>
+              
             </ul>
           )}
 
