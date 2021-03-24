@@ -51,7 +51,7 @@ useEffect(() => {
       apiReps.houseAPI(userAddress).then( async (res) => {
         getReps(res.data.results);
       });
-      apiReps.civicAPI(userAddress).then((res) => {
+      apiReps.stateAPI(userAddress).then((res) => {
         getFeds(res.data.officials);
       });
       

@@ -32,7 +32,7 @@ export function StateView() {
   }, []);
 
   useEffect(() => {
-    apiReps.civicAPI(userAddress).then((res) => {
+    apiReps.stateAPI(userAddress).then((res) => {
       const officesArray = res.data.offices;
       const officialsArray = res.data.officials;
       const dataArray = [];

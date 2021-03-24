@@ -25,10 +25,10 @@ function Dashboard(props) {
     <Navbar auth={auth} onClick={_logout}/>
     <Container>
         <div className="row mx-5" style={styles.rowStyle}>
-          <div className="col-3 border border-5 border-top-0">
+          <div className="col-3 border border-5">
             <Navpane></Navpane>
           </div>
-          <div className="col-9 border border-5 border-top-0 p-2">
+          <div className="col-9 border border-5 p-2">
           {children}
           </div>
         </div>

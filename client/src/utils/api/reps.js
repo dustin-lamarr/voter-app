@@ -14,15 +14,19 @@ import axios from "axios";
     });
 }
 
-// .get(`https://civicinfo.googleapis.com/civicinfo/v2/representatives?address=910%20Halstead%20Dr%2C%20North%20Salt%20Lake%2C%20UT%2C%20USA&includeOffices=true&key=AIzaSyAlZY6STbQRWB7UhWvmPp4YzinamHtOUzc`)
-
-function civicAPI({ address, address2, city, estado, zip }){
+function stateAPI({ address, address2, city, estado, zip }){
   return axios
   .get(`https://civicinfo.googleapis.com/civicinfo/v2/representatives?address=${address}${city}${estado}${zip}USA&includeOffices=true&levels=administrativeArea1&key=AIzaSyAlZY6STbQRWB7UhWvmPp4YzinamHtOUzc`)
+}
+
+function municipalAPI({ address, address2, city, estado, zip }){
+  return axios
+  .get(`https://civicinfo.googleapis.com/civicinfo/v2/representatives?address=${address}${city}${estado}${zip}USA&includeOffices=true&levels=administrativeArea2&key=AIzaSyAlZY6STbQRWB7UhWvmPp4YzinamHtOUzc`)
 }
 
 export const apiReps = {
     senAPI,
     houseAPI,
-    civicAPI
+    stateAPI, 
+    municipalAPI
   };

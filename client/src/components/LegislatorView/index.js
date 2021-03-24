@@ -5,7 +5,7 @@ import BioCard from "../BioCard";
 function Legislators(props) {
 
  return (
-   <div className="container">
+   <div className="container border border-top-5">
             <div className="row h-50">
               
                 {props.senators.map((senator, i) => {
