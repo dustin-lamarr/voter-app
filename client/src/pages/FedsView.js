@@ -15,11 +15,7 @@ export function FedsView() {
   };
 
   const [userAddress, getUserAddress] = useState({
-    address: "1080 W Pleasant View Dr.",
-    address2: "",
-    city: "Pleasant View",
     estado: "UT",
-    zip: "84404",
   });
 
   const [senators, getSenators] = useState([]);
@@ -28,10 +24,10 @@ export function FedsView() {
   const [clickInfo, setClickInfo] = useState();
 
   useEffect(() => {
-    if (!userAddress) {
-      return;
-    }
-    apiUsers.getProfile().then(async(res) => {
+    apiUsers.getProfile().then((res) => {
+      if (!userAddress) {
+        return;
+      }
       const tempObject = {
         address: res.data.profile[0].address,
         address2: res.data.profile[0].address2,
@@ -41,16 +37,23 @@ export function FedsView() {
       };
       getUserAddress(tempObject);
     });
-
   }, []);
 
   useEffect(() => {
-    apiReps.senAPI(userAddress).then(async (res) => {
-      getSenators(res.data.results);
+    apiReps.senAPI(userAddress).then( (res) => {
+      // getSenators(res.data.results[0].members);
+      
+      const resArray = res.data.results[0].members;
+   let senArray = resArray.filter(sens => sens.state == userAddress.estado);
+   console.log(senArray)
+      getSenators(senArray)
     });
 
-    apiReps.houseAPI(userAddress).then(async (res) => {
-      getReps(res.data.results);
+    apiReps.houseAPI(userAddress).then( (res) => {
+      const tempArray = res.data.results[0].members;
+      let repArray = tempArray.filter(sens => sens.state == userAddress.estado);
+      console.log(repArray)
+      getReps(repArray);
     });
   }, [userAddress]);
 
@@ -67,8 +70,8 @@ if (!clickInfo) {
             <div className="col-sm-6">
               <BioCard
                 id={senator.id}
-
-                name={senator.name}
+                firstName={senator.first_name}
+                lastName={senator.last_name}
                 role={senator.role}
                 party={senator.party}
                image={senator.photoUrl}
@@ -89,7 +92,8 @@ if (!clickInfo) {
             <div className="col-sm-3 py-2">
               <BioCard
                 id={rep.id}
-                name={rep.name}
+                firstName={rep.first_name}
+                lastName={rep.last_name}
                 role={rep.role}
                 party={rep.party}
                 image={rep.photoUrl}
@@ -116,6 +120,7 @@ if (!clickInfo) {
            facebook={clickInfo.facebook_account}
            nextElection={clickInfo.next_election}
           photos={clickInfo.photoUrl}
+          age={clickInfo.date_of_birth}
           >
             
           </Dossier>

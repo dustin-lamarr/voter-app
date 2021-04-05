@@ -78,6 +78,7 @@ function Navbar({ home, dashboard, onClick, auth, madeWith }) {
                   className="nav-link border-0 "
                   aria-current="page"
                   onClick={onClick}
+                  href="/"
                 >
                   Logout
                 </button>

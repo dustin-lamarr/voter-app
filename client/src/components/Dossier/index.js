@@ -1,6 +1,6 @@
 import React from "react";
 
-function Dossier({ name, role, party, twitter, facebook, nextElection, id, image }) {
+function Dossier({ firstName, lastName, role, party, twitter, facebook, nextElection, id, image, age }) {
   const partyName = party;
 
   return (
@@ -19,7 +19,8 @@ function Dossier({ name, role, party, twitter, facebook, nextElection, id, image
       ></img>: ""}
         </div> */}
           <div className="col-sm">
-        <h5 className="card-title">{name}</h5>
+        <h5 className="card-title">{firstName} {lastName}</h5>
+        <p></p>
         <p className="card-text">{role}</p>
         </div>
         </div>

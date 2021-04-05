@@ -2,14 +2,15 @@ import axios from "axios";
 // WC6aoOLgSUocbUqZnImncwHcebBAq2k7hB4JXIT9
 // IWc4gzoEbejd3CUB2eNz5EMyKsgT9MC7EFmz7M6A
  function senAPI({ estado }) {
-      return axios.get(`https://api.propublica.org/congress/v1/members/senate/${estado}/current.json`,
+      return axios.get("https://api.propublica.org/congress/v1/116/senate/members.json",
     {
         headers: { "X-API-Key": "WC6aoOLgSUocbUqZnImncwHcebBAq2k7hB4JXIT9"},
     }); 
   }
 
  function houseAPI({ estado }){
-   return axios.get(`https://api.propublica.org/congress/v1/members/house/${estado}/current.json`, {
+   return axios.get("https://api.propublica.org/congress/v1/116/house/members.json", 
+   {
       headers: { "X-API-Key": "WC6aoOLgSUocbUqZnImncwHcebBAq2k7hB4JXIT9"},
     });
 }
