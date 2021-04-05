@@ -72,7 +72,7 @@ if (!clickInfo) {
                 id={senator.id}
                 firstName={senator.first_name}
                 lastName={senator.last_name}
-                role={senator.role}
+                title={senator.short_title}
                 party={senator.party}
                image={senator.photoUrl}
                 onClick={(event) => {
@@ -94,7 +94,7 @@ if (!clickInfo) {
                 id={rep.id}
                 firstName={rep.first_name}
                 lastName={rep.last_name}
-                role={rep.role}
+                title={rep.short_title}
                 party={rep.party}
                 image={rep.photoUrl}
                 onClick={(event) => {
@@ -113,10 +113,11 @@ if (!clickInfo) {
         <Dashboard>
           <Dossier
            id={clickInfo.id}
-           name={clickInfo.name}
-           role={clickInfo.role}
+           firstName={clickInfo.first_name}
+                lastName={clickInfo.last_name}
+           title={clickInfo.title}
            party={clickInfo.party}
-           twitter={clickInfo.twitter_id}
+           twitter={clickInfo.twitter_account}
            facebook={clickInfo.facebook_account}
            nextElection={clickInfo.next_election}
           photos={clickInfo.photoUrl}

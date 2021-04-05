@@ -1,6 +1,6 @@
 import React from "react";
 
-function Dossier({ firstName, lastName, role, party, twitter, facebook, nextElection, id, image, age }) {
+function Dossier({ firstName, lastName, title, party, twitter, facebook, nextElection, id, image, age }) {
   const partyName = party;
 
   return (
@@ -20,8 +20,8 @@ function Dossier({ firstName, lastName, role, party, twitter, facebook, nextElec
         </div> */}
           <div className="col-sm">
         <h5 className="card-title">{firstName} {lastName}</h5>
-        <p></p>
-        <p className="card-text">{role}</p>
+        <p className="card-text">{age}</p>
+        <p className="card-text">{title}</p>
         </div>
         </div>
       </div>
@@ -38,7 +38,7 @@ function Dossier({ firstName, lastName, role, party, twitter, facebook, nextElec
         </li>
         <li className="list-group-item">
           Facebook:{" "}
-          <a href="https://www.facebook.com/" className="card-link">
+          <a href={`https://www.facebook.com/${facebook}`} className="card-link">
             {facebook}
           </a>
         </li>

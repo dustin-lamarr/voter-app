@@ -1,6 +1,6 @@
 import React from "react";
 
-function BioCard({ image, firstName, lastName, role, party, id, onClick }) {
+function BioCard({ image, firstName, lastName, title, party, id, onClick }) {
   const partyName = party;
 
   return (
@@ -9,7 +9,7 @@ function BioCard({ image, firstName, lastName, role, party, id, onClick }) {
         <div className="row">
         <div className="col-sm-auto">
         <h5 className="card-title">{firstName} {lastName}</h5>
-        <p className="card-text">{role}</p>
+        <p className="card-text">{title}</p>
         </div>
         <div className="col-sm">
           { image ? 
