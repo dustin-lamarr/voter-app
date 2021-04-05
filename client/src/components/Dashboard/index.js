@@ -24,7 +24,7 @@ function Dashboard(props) {
     <>
     <Navbar auth={auth} onClick={_logout}/>
     <Container>
-        <div className="row mx-5" style={styles.rowStyle}>
+        <div className="row mx-5 border-top-5" style={styles.rowStyle}>
           <div className="col-3 border border-5">
             <Navpane></Navpane>
           </div>

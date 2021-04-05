@@ -1,47 +1,53 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Dossier( {senators, reps }) {
- 
-  const [pol, getPol] = useState();
-
-  getPol()
+function Dossier({ name, role, party, twitter, facebook, nextElection, id, image }) {
+  const partyName = party;
 
   return (
-    
-    <div className="container">
-    
-        <div className="col-9 border border-5 py-2">
-            <div className="row border-bottom border-2 pb-2">
-                <div className="col-sm-4">
-            <img src="https://via.placeholder.com/100.png" alt="placeholder"></img>
-            </div>
-            <div className="col-sm-8">
-            <div className="row">
-            <ul className="list-group list-group-horizontal">
+    <div className="row m-auto">
+      <div className="col-sm-4">
+    <div className="card" key={id}>
+      <div className="card-body">
+        <div className="row">
+        {/* <div className="col-sm">
+          { image !== "" ? 
+        <img
+        src={image}
+        className="card-img-top img-thumbnail"
+        alt="..."
+        style={{height:"100px", width:"100px"}}
+      ></img>: ""}
+        </div> */}
+          <div className="col-sm">
+        <h5 className="card-title">{name}</h5>
+        <p className="card-text">{role}</p>
+        </div>
+        </div>
+      </div>
+      <ul className="list-group list-group-flush">
         <li className="list-group-item">
-          Party: {senators.party === "R" ? "Republican" : "Democrat"}
+          Party: {partyName}
         </li>
-        <li className="list-group-item">Next Election: {senators.next}</li>
+        <li className="list-group-item">Next Election: {nextElection}</li>
         <li className="list-group-item">
           Twitter:{" "}
-          <a href={`https://twitter.com/${senators.twitter}`} className="card-link">
-            @{senators.twitter}
+          <a href={`https://twitter.com/${twitter}`} className="card-link">
+            @{twitter}
           </a>
         </li>
         <li className="list-group-item">
           Facebook:{" "}
           <a href="https://www.facebook.com/" className="card-link">
-            {senators.facebook}
+            {facebook}
           </a>
         </li>
       </ul>
-    
-            </div>
-            </div>
-            </div>
-        </div>
-        </div>
-   
+      
+    </div>
+    </div>
+    <div className="col-sm-8"></div>
+    </div>
+  );
 }
 
   export default Dossier;

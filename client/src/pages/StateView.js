@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { apiReps, apiUsers } from "../utils/api";
-import Container from "../components/Container";
 import Dashboard from "../components/Dashboard";
 import BioCard from "../components/BioCard";
+import Dossier from "../components/Dossier"
 
 export function StateView() {
   const [userAddress, getUserAddress] = useState({
@@ -36,7 +36,7 @@ export function StateView() {
       const officesArray = res.data.offices;
       const officialsArray = res.data.officials;
       const dataArray = [];
-console.log(officesArray)
+      console.log(officesArray);
       for (const key in officialsArray) {
         const politicianObject = {
           // ...userAddress,
@@ -48,7 +48,7 @@ console.log(officesArray)
           image: officialsArray[key].photoUrl
             ? officialsArray[key].photoUrl
             : "",
-          level: officialsArray[key].levels
+          level: officialsArray[key].levels,
         };
         for (const social in officialsArray[key].channels) {
           if (officialsArray[key].channels[social].type === "Twitter") {
@@ -69,58 +69,61 @@ console.log(officesArray)
           }
         }
 
-
         dataArray.push(politicianObject);
       }
-let filteredArray = dataArray.filter(levels => levels == "country")
-console.log(filteredArray)
+      let filteredArray = dataArray.filter((levels) => levels == "country");
+      console.log(filteredArray);
       getStateLegs(dataArray);
     });
   }, [userAddress]);
 
   console.log(stateLegs);
-  
 
+  const [state, setState] = useState();
+  const [clickInfo, setClickInfo] = useState();
+
+  if (!clickInfo) {
   return (
-   
-      <Dashboard stateLegs={stateLegs}>
-        <div className="row">
-          {stateLegs.map((legs, i) => {
-            return (
-              <div className="col-sm-6 pb-2">
-                <BioCard
-                  i={i}
-                  name={legs.name}
-                  role={legs.role}
-                  party={legs.party}
-                  twitter={legs.twitter}
-                  facebook={legs.facebook}
-                  // nextElection={legs.next_election}
-                  img={legs.image}
-                />
-              </div>
-            );
-          })}
-        </div>
-        <hr />
-        {/* <div className="row">
-          {stateLegs.map((rep, i) => {
-            return (
-              <div className="col-sm-3">
-                <BioCard
-                  i={i}
-                  name={rep.name}
-                  role={rep.role}
-                  party={rep.party}
-                  twitter={rep.twitter}
-                  facebook={rep.facebook}
-                  // nextElection={rep.next_election}
-                />
-              </div>
-            );
-          })}
-        </div> */}
-      </Dashboard>
-   
+    <Dashboard stateLegs={stateLegs}>
+      <div className="row">
+        {stateLegs.map((legs, i) => {
+          return (
+            <div className="col-sm-6 pb-2">
+              <BioCard
+                i={i}
+                name={legs.name}
+                role={legs.role}
+                party={legs.party}
+                twitter={legs.twitter}
+                facebook={legs.facebook}
+                // nextElection={legs.next_election}
+                img={legs.image}
+                onClick={(event) => {
+                  setState(event.target.onClick);
+                  setClickInfo(legs);
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
+      <hr />
+    </Dashboard>
   );
+
+} else {
+  return (
+  <Dashboard>
+    <Dossier
+     id={clickInfo.id}
+     name={clickInfo.name}
+     role={clickInfo.role}
+     party={clickInfo.party}
+    photos={clickInfo.photoUrl}
+    >
+      
+    </Dossier>
+  </Dashboard>
+  )
+}
 }
