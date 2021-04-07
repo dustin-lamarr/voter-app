@@ -44,14 +44,14 @@ export function FedsView() {
       // getSenators(res.data.results[0].members);
       
       const resArray = res.data.results[0].members;
-   let senArray = resArray.filter(sens => sens.state == userAddress.estado);
+   let senArray = resArray.filter(sens => sens.state === userAddress.estado);
    console.log(senArray)
       getSenators(senArray)
     });
 
     apiReps.houseAPI(userAddress).then( (res) => {
       const tempArray = res.data.results[0].members;
-      let repArray = tempArray.filter(sens => sens.state == userAddress.estado);
+      let repArray = tempArray.filter(sens => sens.state === userAddress.estado);
       console.log(repArray)
       getReps(repArray);
     });
@@ -122,6 +122,16 @@ if (!clickInfo) {
            nextElection={clickInfo.next_election}
           photos={clickInfo.photoUrl}
           age={clickInfo.date_of_birth}
+          youtube={clickInfo.youtube_account}
+          office={clickInfo.office}
+          phone={clickInfo.phone}
+          fax={clickInfo.fax}
+          url={clickInfo.url}
+          contact={clickInfo.contact_form}
+          totalVotes={clickInfo.total_votes}
+          missedVotes={clickInfo.missed_votes}
+          missedVotesPct={clickInfo.missed_votes_pct}
+          votesWParty={clickInfo.votes_with_party_pct}
           >
             
           </Dossier>
